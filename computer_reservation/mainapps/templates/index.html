@@ -4,37 +4,439 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
 <img src="{% static 'bg.jpg' %}" id="filterblur">
-<div class="container-fluid" id="hugecon">
-    <div class="row">
-        <div class="col-sm-12">
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-light" style="background-color: #29487d !important;text-align: center">
+    <a class="navbar-brand" href="#" style="color: white">
+        การจองคอมพิวเตอร์
+    </a>
+</nav>
+<div id="app">
+    <div class="container-fluid" id="hugecon">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                           role="tab"
+                           aria-controls="nav-home" aria-selected="true">คอมพิวเตอร์</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                           role="tab"
+                           aria-controls="nav-profile" aria-selected="false">การจอง</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <table class="table table-bordered table-light" style="text-align: center">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" colspan="2">เลขที่เครื่อง</th>
+                                <th scope="col" colspan="1">1</th>
+                                <th scope="col" colspan="1">2</th>
+                                <th scope="col" colspan="1">3</th>
+                                <th scope="col" colspan="1">4</th>
+                                <th scope="col" colspan="1">5</th>
+                                <th scope="col" colspan="1">6</th>
+                                <th scope="col" colspan="1">7</th>
+                                <th scope="col" colspan="1">8</th>
+                                <th scope="col" colspan="1">9</th>
+                                <th scope="col" colspan="1">10</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for j in loop %}
+                                <tr>
+                                    <th scope="row" colspan="2"><h1 style="margin: auto">
+                                        {% if j == 1 %}
+                                            A
+                                        {% elif j == 2 %}
+                                            B
+                                        {% elif j == 3 %}
+                                            C
+                                        {% elif j == 4 %}
+                                            D
+                                        {% elif j == 5 %}
+                                            E
+                                        {% elif j == 6 %}
+                                            F
+                                        {% elif j == 7 %}
+                                            G
+                                        {% elif j == 8 %}
+                                            H
+                                        {% endif %}
+                                    </h1></th>
 
+                                    {% for i in computer %}
+                                        {% if i.id <= 10 and j == 1 %}
+                                            {% if i.status == True %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal"
+                                                            data-target="#exampleModal"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'live.png' %}" width="50px"></button>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal" data-target="#exampleModal2"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'busy.png' %}" width="50px"></button>
+                                                </td>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if i.id <= 20 and i.id > 10 and j == 2 %}
+                                            {% if i.status == True %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal"
+                                                            data-target="#exampleModal"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'live.png' %}" width="50px"></button>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal" data-target="#exampleModal2"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'busy.png' %}" width="50px"></button>
+                                                </td>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if i.id <= 30 and i.id > 20 and j == 3 %}
+                                            {% if i.status == True %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal"
+                                                            data-target="#exampleModal"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'live.png' %}" width="50px"></button>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal" data-target="#exampleModal2"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'busy.png' %}" width="50px"></button>
+                                                </td>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if i.id <= 40 and i.id > 30 and j == 4 %}
+                                            {% if i.status == True %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" v-on:click="comid({{ i.id }})" data-toggle="modal"
+                                                            data-target="#exampleModal"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'live.png' %}" width="50px"></button>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal" data-target="#exampleModal2"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'busy.png' %}" width="50px"></button>
+                                                </td>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if i.id <= 50 and i.id > 40 and j == 5 %}
+                                            {% if i.status == True %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal"
+                                                            data-target="#exampleModal"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'live.png' %}" width="50px"></button>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal" data-target="#exampleModal2"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'busy.png' %}" width="50px"></button>
+                                                </td>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if i.id <= 60 and i.id > 50 and j == 6 %}
+                                            {% if i.status == True %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal"
+                                                            data-target="#exampleModal"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'live.png' %}" width="50px"></button>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal" data-target="#exampleModal2"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'busy.png' %}" width="50px"></button>
+                                                </td>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if i.id <= 70 and i.id > 60 and j == 7 %}
+                                            {% if i.status == True %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal"
+                                                            data-target="#exampleModal"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'live.png' %}" width="50px"></button>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal" data-target="#exampleModal2"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'busy.png' %}" width="50px"></button>
+                                                </td>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if i.id <= 80 and i.id > 70 and j == 8 %}
+                                            {% if i.status == True %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal"
+                                                            data-target="#exampleModal"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'live.png' %}" width="50px"></button>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    <button v-on:click="comid({{ i.id }})" data-toggle="modal"
+                                                            data-target="#exampleModal2"
+                                                            id="btnmodal">
+                                                        <img src="{% static 'busy.png' %}" width="50px"></button>
+                                                </td>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <table class="table table-bordered table-dark" style="background-color: white;color: black">
+                            <thead>
+                            <tr>
+                                <th scope="col">Student ID</th>
+                                <th scope="col">Computer ID</th>
+                                <th scope="col">Day Login</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for h in reservation %}
+                                <tr>
+                                    <th scope="row">{{ h.student.id }}</th>
+                                    <td>{{ h.computer.id }}</td>
+                                    <td>{{ h.date }}</td>
+                                    <td>{{ h.start_date }}</td>
+                                    <td>{{ h.end_date }}</td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
-</body>
 
-<script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
-<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <form method="post" action="{% url 'index' %}">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">การขอเข้าใช้งานคอมพิวเตอร์</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        {% csrf_token %}
+                        <div class="container" style="text-align: center">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3>กรุณากรอกข้อมูลของท่าน</h3>
+                                    <hr>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Student ID</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                               name="student_id"
+                                               aria-describedby="emailHelp" placeholder="Student ID" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Student Name</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                               name="student_name"
+                                               aria-describedby="emailHelp" placeholder="Student Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Student SurName</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                               name="student_surname"
+                                               aria-describedby="emailHelp" placeholder="Student SurName" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Student Year</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                               name="student_year"
+                                               aria-describedby="emailHelp" placeholder="Student Year" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Date Time</label>
+                                        <input type="date" class="form-control" id="exampleInputEmail1"
+                                               name="date_time"
+                                               aria-describedby="emailHelp" placeholder="Date Time" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Start Time</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                               name="start_time"
+                                               aria-describedby="emailHelp" placeholder="Start Time" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">End Time</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="End_time"
+                                               aria-describedby="emailHelp" placeholder="End Time" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputEmail1"
+                                               name="Password"
+                                               aria-describedby="emailHelp" placeholder="Password" required>
+                                    </div>
+                                </div>
+                                <input name="id_com" v-model="comid_now" hidden>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <form method="post" action="{% url 'index' %}">
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">การขอเข้าใช้งานคอมพิวเตอร์</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        {% csrf_token %}
+                        <input name="id_com" v-model="comid_now" hidden>
+                        <div class="container" style="text-align: center">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3>Logout</h3>
+                                    <hr>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Student ID</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                               name="student_id"
+                                               aria-describedby="emailHelp" placeholder="Student ID">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputEmail1"
+                                               name="Password"
+                                               aria-describedby="emailHelp" placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        delimiters: ["<%", "%>"],
+        data: {
+            message: 'Hello Vue!',
+            comid_now: 0,
+        },
+        methods: {
+            comid(id) {
+                this.comid_now = id;
+            }
+        }
+    })
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
 </html>
 <style>
+    @font-face {
+        font-family: myFirstFont;
+        src: url("{% static 'ss.ttc' %}");
+    }
+
     body {
         padding: 0;
         margin: 0;
         height: 100vh;
         width: 100vw;
         overflow: hidden;
+        font-family: myFirstFont;
     }
 
     #hugecon {
         width: 100vw;
         height: 100vh;
         margin: 0;
-        padding: 0
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-top: 50px;
     }
 
     #filterblur {
@@ -48,5 +450,18 @@
         position: absolute;
         z-index: -2000;
 
+    }
+
+    .nav-item {
+        color: white;
+    }
+
+    #btnmodal {
+        background-color: transparent;
+        border: transparent;
+    }
+
+    .form-group {
+        text-align: left;
     }
 </style>
